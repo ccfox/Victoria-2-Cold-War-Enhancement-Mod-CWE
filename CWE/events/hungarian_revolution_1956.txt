@@ -1,88 +1,1366 @@
-#Hungarian Revolution 1956 - HUN start
-country_event = {
-  id = 8501101
-  title = EVT_8501101_NAME
-  desc = EVT_8501101_DESC
-  picture = "nwo2_hungarian_revolution_1956"
+####			  ####
+#### Hungarian Revolution ####
+####			  ####
+
+##		    ##
+## Gero interregnum ##
+##		    ##
+
+#DeStalinization Speech
+country_event = { 
+	id = 8501109
+	title = "The DeStalinization Speech"
+	desc = 
+	picture = ""
   
 	fire_only_once = yes
 
 	trigger = {
-    	tag = HUN
-		year = 1956 
-		NOT = { year = 1960 }
+		tag = HUN
+		year = 1956
+		NOT = { year = 1990 )
+		NOT = { has_country_flag = nagy_limited }
 		government = proletarian_dictatorship
-		is_vassal = yes
-		vassal_of = RUS
-    	war = no
-		has_global_flag = blocsenabled
+		ruling_party_ideology = communist
+
+		#Temporary triggers for US
+		has_global_flag = blocs_enabled
+		USA = { 
+			AND = {
+				exists = yes
+				NOT = { OR = { government = socialist_democracy government = proletarian_dictatorship government = proletarian_dictatorship1 } }
+			}
+		}
+		#Technically both the USA and UK provided instigation to a lot of the riots, though I'm not sure how I want to handle that right now
+
+		#has_global_flag = rfe_usa
+
+
+		#Gero's 'Interregnum' is just starting and Destalinization is happening in the USSR
+		has_country_flag = gero_hungary
+		NOT = { has_country_flag = gero_int_hungary }
+		has_global_flag = de_stalinization
 	}
 
-	mean_time_to_happen = { months = 10 }
+	mean_time_to_happen = { months = 1 }
+
 
 	option = {
-		name = EVT_8501101_A #War with RUS
+		name = "The position of Stalinism in Europe is shaken."
+		set_country_flag = hun_forced_destalinization
+		set_country_flag = gero_int_hungary #Will be used to block 'normal' events for Gero's route
+		any_pop = { militancy = 2 consciousness = 2 }
+		any_pop = { 
+			ideology = { factor = 0.15 value = communist_social }
+		}
+		any_pop = { 
+			ideology = { factor = 0.05 value = liberal }
+		}
+		any_pop = { 
+			ideology = { factor = 0.05 value = nationalist }
+		}
+	}
+}
 
-		government = socialist_democracy 
-		country_event = 800054
 
-		#Soviet choice to restore order
-		RUS = { country_event = 8501104 }
+#Protests and Unrest
+country_event = { 
+	id = 8501110
+	title = "Protests Grip the Nation"
+	desc = 
+	picture = ""
+  
+	fire_only_once = yes
 
-		set_global_flag = hungarian_revolution_1956
+	trigger = {
+		tag = HUN
+		year = 1956
+		NOT = { year = 1990 )
+
+		government = proletarian_dictatorship
+		ruling_party_ideology = communist
+
+		#Unrest in the nation and party forces compromise
+		has_country_flag = hun_forced_destalinization
+
+		#Gero's 'Interregnum' is ongoing and Destalinization is happening in the USSR
+		has_country_flag = gero_int_hungary
+		has_global_flag = de_stalinization
+	}
+
+	mean_time_to_happen = { months = 1 }
+
+
+	option = {
+		name = "We have to respond to this at once!"
+		any_pop = { militancy = 4 consciousness = 4 }
+		any_pop = { 
+			ideology = { factor = 0.02 value = communist_social }
+		}
+		any_pop = { 
+			ideology = { factor = 0.02 value = liberal }
+		}
+		any_pop = { 
+			ideology = { factor = 0.02 value = socialist }
+		}
+	}
+}
+
+
+##	      ##
+## Revolution ##
+##	      ##
+
+
+#Appoint Nagy as Prime Minister #Since there is no way to code a 'dynamic' uprising to put Nagy in power without dozens of events and work-arounds, this event fires if you do not have the support from the people to prevent Nagy's return to government, with a completely different event handling if you have the support
+country_event = { 
+	id = 8501111
+	title = "The People Demand Change"
+	desc = 
+	picture = ""
+  
+	fire_only_once = yes
+
+	trigger = {
+		tag = HUN
+		year = 1956
+		NOT = { year = 1990 )
+
+		government = proletarian_dictatorship
+		ruling_party_ideology = communist
+
+		NOT = { has_country_flag = nagy_limited }
+		has_country_flag = hun_forced_destalinization
+		has_global_flag = de_stalinization
+
+
+		NOT = { pop_majority_ideology = communist }
+
+
+		#Gero's 'Interregnum' is ongoing and Destalinization is happening in the USSR
+		has_country_flag = gero_int_hungary
+		has_global_flag = de_stalinization
+	}
+
+	mean_time_to_happen = { months = 2 }
+
+
+	option = {
+		name = "Circumstances call for Nagy's return."
+		add_country_modifier = { name = political_strife duration = 2095 }
+		any_pop = { militancy = -3 consciousness = -3 }
+		any_pop = { 
+			ideology = { factor = 0.05 value = communist_social }
+		}
+		set_country_flag = nagy_limited
+	}
+}
+
+#Appoint Nagy as Prime Minister - somehow have majority ideology support
+country_event = { 
+	id = 8501112
+	title = "The People Demand Change"
+	desc = 
+	picture = ""
+  
+	fire_only_once = yes
+
+	trigger = {
+		tag = HUN
+		year = 1956
+		NOT = { year = 1990 )
+
+
+		government = proletarian_dictatorship
+		ruling_party_ideology = communist
+
+
+		NOT = { has_country_flag = nagy_limited }
+		has_country_flag = hun_forced_destalinization
+		has_global_flag = de_stalinization
+
+
+		#If someohow a majority remain in support of Stalinism, loyal workers can be called to organize counter-protests
+		pop_majority_ideology = communist
+	}
+
+	mean_time_to_happen = { months = 2 }
+
+
+	option = {
+		name = "Circumstances call for Nagy's return."
+		add_country_modifier = { name = political_strife duration = 2095 }
+		any_pop = { militancy = -3 consciousness = -3 }
+		any_pop = { 
+			ideology = { factor = 0.05 value = communist_social }
+		}
+		set_country_flag = nagy_limited
+	}
+
+	option = {
+		name = "Our loyal supporters can cope with this dissent, do not cede to their demands."
+		add_country_modifier = { name = political_strife duration = 4095 }
+		any_pop = { militancy = 5 consciousness = 5 }
+		any_pop = { 
+			ideology = { factor = 0.15 value = liberal }
+		}
+		clr_country_flag = gero_int_hungary
+		set_country_flag = gero_hungary
+	}
+}
+
+
+#Further unrest events?
+country_event = { 
+	id = 8501113
+	title = "Unrest Continues"
+	desc = 
+	picture = ""
+  
+	fire_only_once = yes
+
+	trigger = {
+		tag = HUN
+		year = 1956
+		NOT = { year = 1990 )
+
+
+		NOT = { has_country_flag = nagy_limited }
+		has_country_flag = nagy_limited
+		has_global_flag = de_stalinization
+
+		government = proletarian_dictatorship
+		ruling_party_ideology = communist
+	}
+
+	mean_time_to_happen = { days = 2 } #From here on out, events happen fast, since only so much can fit on a single event page
+
+
+	option = {
+		name = "We are forced to seek assistance from Soviet and Hungarian military forces."
+		any_pop = { militancy = 2 consciousness = 2 }
+		any_pop = { 
+			ideology = { factor = 0.05 value = communist_social }
+		}
+
+		ai_chance = { 
+			factor = 0.9
+		}
+	}
+
+	option = {
+		name = "Make appeals to the people and put security forces on stand-by."
+		any_pop = { militancy = 4 consciousness = 4 }
+		any_pop = { 
+			limit = { strata = rich }
+			ideology = { 
+				factor = 0.08 
+				value = nationalist
+			}
+		}
+		any_pop = { 
+			limit = { strata = middle }
+			ideology = { 
+				factor = 0.08 
+				value = socialist
+			}
+		}
+		any_pop = { 
+			limit = { strata = poor }
+			ideology = { 
+				factor = 0.1 
+				value = communist
+			}
+		}
+
+		ai_chance = { 
+			factor = 0.1
+		}
+	}
+}
+
+
+#Reformist Party Coup
+country_event = {
+  id = 8501114
+  title = "Reformists Sezie Power"
+  desc = 
+  picture = ""
+  
+	fire_only_once = yes
+
+	trigger = {
+    		tag = HUN
+		year = 1956 
+		NOT = { year = 1960 }
+
+		vassal_of = RUS
+    		war = no
+
+
+		NOT = { has_global_flag = hungarian_revolution_1956 }
+		has_country_flag = gero_hungary
+		has_country_flag = nagy_limited
+		
+
+		government = proletarian_dictatorship
+		ruling_party_ideology = communist
+	}
+
+	mean_time_to_happen = { days = 5 }
+
+	option = {
+		name = "Nagy will lead Hungary into the future."
+
+		set_global_flag = hungarian_revolution_1956 
+
+		government = proletarian_dictatorship1
+		ruling_party_ideology = communist_social
+
+		country_event = 8501115
+		create_variable = {
+			name = hungarian_radicalism
+			value = 1
+		}
+
+		any_pop = { 
+			ideology = { factor = 0.05 value = communist_social }
+		}
 
 		any_pop = { consciousness = 5 }
 
-		ai_chance = { factor = 0.9 }
+		ai_chance = { 
+			factor = 0.9
+			modifier = {
+				factor = 0.6
+				NOT = { pop_majority_ideology = communist }
+			}
+		}
 	}
 
 	option = {
-		name = EVT_8501101_B #No war
+		name = "The coup attempt is swifty crushed with the help of loyal forces."
+
+		clr_country_flag = nagy_limited
+		clr_country_flag = gero_int_hungary
+		set_country_flag = gero_hungary
+
 		any_pop = { 
-			militancy = 7.0 
-			ideology = { factor = 0.05 value = liberal }
+			militancy = 10
+			ideology = { factor = 0.08 value = liberal }
 		}
+
 		add_country_modifier = { name = revolution_chaos duration = 3650 }
-		ai_chance = { factor = 0.1 }
-	}
 
+		ai_chance = { 
+			factor = 0.1
+			modifier = {
+				factor = 6
+				pop_majority_ideology = communist
+			}
+		}
+	}
 }
 
-#Hungarian Revolution succeeds
+#Relationship with the Warsaw Pact
 country_event = {
-  id = 8501102
-  title = EVT_8501115_NAME
-  desc = EVT_8501115_DESC
-  picture = "nwo2_hungarian_revolution_1956_victory"
+  id = 8501115
+  title = "The Question of Soviet Soldiers in Hungary"
+  desc = 
+  picture = ""
   
+	fire_only_once = yes
 	is_triggered_only = yes
 
 	option = {
-		name = "The Hungarian people are now free!"
-		prestige = 250
+		name = "The people have spoken, Soviet presence in Hungary must end!"
+		RUS = {
+			country_event = 8501116
+		}
+		any_pop = { militancy = -2 consciousness = -2 }
 		any_pop = { 
-			militancy = -5.0 
-			consciousness = 10 
-			ideology = { factor = 0.10 value = nationalist }
+			limit = { OR = { strata = middle strata = rich } }
+			ideology = { 
+				factor = 0.08 
+				value = communist_social 
+			}
+		}
+		change_variable = {
+			which = hungarian_radicalism
+			value = 2
+		}
+		ai_chance = { 
+			factor = 0.9
+			modifier = {
+				factor = 0.6
+				NOT = { pop_majority_ideology = communist_social }
+			}
 		}
 	}
 
+	option = {
+		name = "Soviet soldiers ensure stability!"
+		country_event = 
+		any_pop = { militancy = 2 consciousness = 2 }
+		any_pop = { 
+			limit = { strata = rich }
+			ideology = { 
+				factor = 0.08 
+				value = nationalist
+			}
+		}
+		any_pop = { 
+			limit = { strata = middle }
+			ideology = { 
+				factor = 0.08 
+				value = liberal
+			}
+		}
+		any_pop = { 
+			limit = { strata = poor }
+			ideology = { 
+				factor = 0.08 
+				value = communist
+			}
+		}
+		change_variable = {
+			which = hungarian_radicalism
+			value = -1
+		}
+		ai_chance = { 
+			factor = 0.1
+			modifier = {
+				factor = 6
+				pop_majority_ideology = communist
+			}
+		}
+	}
 }
 
-#Hungarian Revolution fails
+
+
+
+#Relationship with the Warsaw Pact - Soviet Response
 country_event = {
-  id = 8501103
-  title = EVT_8501105_NAME
-  desc = EVT_8501105_DESC
-  picture = "nwo2_hungarian_revolution_1956_victory"
+  id = 8501116
+  title = "Hungary Demands a Soviet Withdraw"
+  desc = 
+  picture = ""
   
+	fire_only_once = yes
 	is_triggered_only = yes
 
 	option = {
-		name = "We shall submit to Soviet domination!"
+		name = "We will honor Hungary's request." #Historically the USSR withdrew troops before the situation degraded further
+		badboy = -2
+		HUN = {
+			country_event = 8501117
+		}
+		any_pop = { militancy = 2 consciousness = 2 }
+		any_pop = { 
+			ideology = { 
+				factor = 0.10
+				value = communist_social 
+			}
+		}
+		ai_chance = { 
+			factor = 0.8
+		}
+	}
+
+	option = {
+		name = "We cannot risk losing influence in Hungary!"
+		badboy = 2
+		HUN = {
+			country_event = 8501118
+		}
+		any_pop = { militancy = -2 consciousness = -2 }
+		add_country_modifier = { name = political_strife duration = 2095 }
+		any_pop = { 
+			ideology = { 
+				factor = 0.10 
+				value = communist
+			}
+		}
+		ai_chance = { 
+			factor = 0.2
+		}
+	}
+}
+
+#Soviets Accept #Leads to Chaos in the Streets
+country_event = {
+  id = 8501117
+  title = "Soviets Agree to Withdraw"
+  desc = 
+  picture = ""
+  
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "Hungary breaths free."
+		prestige = 10
+		RUS = { release_vassal = HUN }
+		country_event = #Chaos in the Streets
+	}
+}
+
+#Soviets Reject #Rejecting Soviet demands skips straight to a withdraw of Hungary from the Warsaw Pact and invasion
+country_event = {
+  id = 8501118
+  title = "Soviets Refuse to Withdraw"
+  desc = 
+  picture = ""
+  
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "We must defend ourselves!"
+		RUS = {
+			country_event = 8501127
+		}
+		any_pop = { militancy = -2 consciousness = -2 }
+		any_pop = { 
+			limit = { OR = { strata = middle strata = rich } }
+			ideology = { 
+				factor = 0.08 
+				value = nationalist
+			}
+		}
+		ai_chance = { 
+			factor = 0.7
+		}
+	}
+
+	option = {
+		name = "We are forced to concede to Soviet demands."
+		country_event = 8501119
+		any_pop = { militancy = 8 consciousness = 8 }
+		any_pop = { 
+			limit = { strata = rich }
+			ideology = { 
+				factor = 0.08 
+				value = nationalist
+			}
+		}
+		any_pop = { 
+			limit = { strata = middle }
+			ideology = { 
+				factor = 0.08 
+				value = liberal
+			}
+		}
+		any_pop = { 
+			limit = { strata = poor }
+			ideology = { 
+				factor = 0.08 
+				value = populist
+			}
+		}
+		change_variable = {
+			which = hungarian_radicalism
+			value = -1
+		}
+		ai_chance = { 
+			factor = 0.3
+		}
+	}
+}
+
+
+#Chaos in the Streets
+country_event = {
+  id = 8501119
+  title = "Chaos in the Streets"
+  desc = 
+  picture = ""
+  
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "Encourage this vigilantism."
+		country_event = 8501120
+		any_pop = { militancy = -2 consciousness = -2 }
+
+		#There was a lot of violence against minority groups aligned to the previous regime
+		any_pop = { 
+			limit = { NOT = { culture = hungarian } ideology = communist } 
+			reduce_pop = 0.99
+		}
+
+
+		any_pop = { 
+			limit = { OR = { strata = middle strata = rich } }
+			ideology = { 
+				factor = 0.08 
+				value = communist_social 
+			}
+		}
+		change_variable = {
+			which = hungarian_radicalism
+			value = 2
+		}
+		ai_chance = { 
+			factor = 0.8
+			modifier = {
+				factor = 0.6
+				NOT = { pop_majority_ideology = communist_social }
+			}
+		}
+	}
+
+	option = {
+		name = "Crack down on the worst elements."
+		country_event = 8501120
+		any_pop = { militancy = 2 consciousness = 2 }
+		any_pop = { 
+			limit = { strata = rich }
+			ideology = { 
+				factor = 0.08 
+				value = nationalist
+			}
+		}
+		any_pop = { 
+			limit = { strata = middle }
+			ideology = { 
+				factor = 0.08 
+				value = liberal
+			}
+		}
+		any_pop = { 
+			limit = { strata = poor }
+			ideology = { 
+				factor = 0.08 
+				value = communist
+			}
+		}
+		change_variable = {
+			which = hungarian_radicalism
+			value = -1
+		}
+		ai_chance = { 
+			factor = 0.1
+			modifier = {
+				factor = 6
+				pop_majority_ideology = communist
+			}
+		}
+	}
+
+	option = {
+		name = "Put an end to the chaos."
+		country_event = 8501120
+		any_pop = { militancy = 8 consciousness = 8 }
+		any_pop = { 
+			limit = { strata = rich }
+			ideology = { 
+				factor = 0.10 
+				value = nationalist
+			}
+		}
+		any_pop = { 
+			limit = { strata = middle }
+			ideology = { 
+				factor = 0.15 
+				value = liberal
+			}
+		}
+		any_pop = { 
+			limit = { strata = poor }
+			ideology = { 
+				factor = 0.12 
+				value = populist
+			}
+		}
+		change_variable = {
+			which = hungarian_radicalism
+			value = -2
+		}
+		ai_chance = { 
+			factor = 0.1
+			modifier = {
+				factor = 6
+				pop_majority_ideology = communist
+			}
+		}
+	}
+}
+
+#Political Turmoil
+country_event = {
+  id = 8501120
+  title = "Political Turmoil"
+  desc = 
+  picture = ""
+  
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "Create a council of staunch reformists to bring true change to Hungary."
+		country_event = 8501121
+		any_pop = { militancy = -2 consciousness = -2 }
+		any_pop = { 
+			limit = { OR = { strata = middle strata = rich } }
+			ideology = { 
+				factor = 0.08 
+				value = communist_social
+			}
+		}
+		change_variable = {
+			which = hungarian_radicalism
+			value = 2
+		}
+		ai_chance = { 
+			factor = 0.8
+			modifier = {
+				factor = 0.6
+				NOT = { pop_majority_ideology = communist_social }
+			}
+		}
+	}
+
+	option = {
+		name = "Ensure a more moderate council."
+		country_event = 8501121
+		any_pop = { militancy = 2 consciousness = 2 }
+		any_pop = { 
+			limit = { strata = rich }
+			ideology = { 
+				factor = 0.08 
+				value = nationalist
+			}
+		}
+		any_pop = { 
+			limit = { strata = middle }
+			ideology = { 
+				factor = 0.08 
+				value = liberal
+			}
+		}
+		any_pop = { 
+			limit = { strata = poor }
+			ideology = { 
+				factor = 0.08 
+				value = communist
+			}
+		}
+		change_variable = {
+			which = hungarian_radicalism
+			value = 1
+		}
+		ai_chance = { 
+			factor = 0.1
+			modifier = {
+				factor = 6
+				pop_majority_ideology = communist
+			}
+		}
+	}
+
+	option = {
+		name = "Let us remain committed to Marxist orthodoxy."
+		country_event = 8501121
+		any_pop = { militancy = 8 consciousness = 8 }
+		any_pop = { 
+			limit = { strata = rich }
+			ideology = { 
+				factor = 0.10 
+				value = nationalist
+			}
+		}
+		any_pop = { 
+			limit = { strata = middle }
+			ideology = { 
+				factor = 0.15 
+				value = liberal
+			}
+		}
+		any_pop = { 
+			limit = { strata = poor }
+			ideology = { 
+				factor = 0.12 
+				value = communist
+			}
+		}
+		change_variable = {
+			which = hungarian_radicalism
+			value = -1
+		}
+		ai_chance = { 
+			factor = 0.1
+		}
+	}
+}
+
+#Foreign Policy
+country_event = {
+  id = 8501121
+  title = "A New Hungarian Foreign Policy"
+  desc = 
+  picture = ""
+  
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "Reach out to the Western nations."
+		country_event = 8501122
+
+		any_country = {
+			limit = { 
+				capital_scope = { continent = europe } 
+				NOT = {
+					OR = {
+						ruling_party_ideology = communist
+						ruling_party_ideology = communist_social
+					}
+				}
+			}
+			relation = { who = THIS value = 100 }
+		}
+
+
+		any_pop = { 
+			limit = { OR = { strata = middle strata = rich } }
+			ideology = { 
+				factor = 0.08 
+				value = liberal
+			}
+		}
+		change_variable = {
+			which = hungarian_radicalism
+			value = 2
+		}
+		ai_chance = { 
+			factor = 0.8
+			modifier = {
+				factor = 0.6
+				NOT = { pop_majority_ideology = communist_social }
+			}
+		}
+	}
+
+	option = {
+		name = "Try to pivot Hungary towards neutrality."
+		country_event = 8501122
+
+
+		any_country = {
+			limit = { 
+				capital_scope = { continent = europe } 
+				OR = {
+					ruling_party_ideology = communist
+					ruling_party_ideology = communist_social
+				}
+			}
+			relation = { who = THIS value = -25 }
+		}
+		any_country = {
+			limit = { 
+				capital_scope = { continent = europe } 
+				NOT = {
+					OR = {
+						ruling_party_ideology = communist
+						ruling_party_ideology = communist_social
+					}
+				}
+			}
+			relation = { who = THIS value = 50 }
+		}
+
+		any_pop = { militancy = 2 consciousness = 2 }
+		any_pop = { 
+			limit = { strata = rich }
+			ideology = { 
+				factor = 0.08 
+				value = conservative
+			}
+		}
+		any_pop = { 
+			limit = { strata = middle }
+			ideology = { 
+				factor = 0.08 
+				value = socialist
+			}
+		}
+		any_pop = { 
+			limit = { strata = poor }
+			ideology = { 
+				factor = 0.08 
+				value = communist_social
+			}
+		}
+		change_variable = {
+			which = hungarian_radicalism
+			value = 1
+		}
+		ai_chance = { 
+			factor = 0.1
+			modifier = {
+				factor = 6
+				pop_majority_ideology = communist
+			}
+		}
+	}
+
+	option = {
+		name = "We must stay firmly loyal to the socialist camp."
+		country_event = 8501122
+
+		any_country = {
+			limit = { 
+				capital_scope = { continent = europe } 
+				OR = {
+					ruling_party_ideology = communist
+					ruling_party_ideology = communist_social
+				}
+			}
+			relation = { who = THIS value = 50 }
+		}
+
+		any_pop = { militancy = 8 consciousness = 8 }
+		any_pop = { 
+			limit = { strata = rich }
+			ideology = { 
+				factor = 0.10 
+				value = nationalist
+			}
+		}
+		any_pop = { 
+			limit = { strata = middle }
+			ideology = { 
+				factor = 0.15 
+				value = communist_social
+			}
+		}
+		any_pop = { 
+			limit = { strata = poor }
+			ideology = { 
+				factor = 0.12 
+				value = communist
+			}
+		}
+		change_variable = {
+			which = hungarian_radicalism
+			value = -1
+		}
+		ai_chance = { 
+			factor = 0.1
+		}
+	}
+}
+
+
+#Democratization
+country_event = {
+  id = 8501122
+  title = "Democratization"
+  desc = 
+  picture = ""
+  
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	option = {
+		name = "Reorganize the opposition and promise new elections."
+		government = socialist_democracy
+		country_event = 800054
+
+		any_pop = { militancy = -2 consciousness = -2 }
+		any_pop = { 
+			limit = { OR = { strata = middle strata = rich } }
+			ideology = { 
+				factor = 0.25
+				value = socialist
+			}
+		}
+		any_pop = { 
+			limit = { strata = poor }
+			ideology = { 
+				factor = 0.25
+				value = communist_social
+			}
+		}
+		change_variable = {
+			which = hungarian_radicalism
+			value = 1
+		}
+		ai_chance = { 
+			factor = 0.8
+			modifier = {
+				factor = 0.6
+				NOT = { pop_majority_ideology = communist_social }
+			}
+		}
+	}
+
+	option = {
+		name = "Preserve the leading role of the Communist Party."
+		any_pop = { militancy = 3 consciousness = 3 }
+		any_pop = { 
+			limit = { strata = rich }
+			ideology = { 
+				factor = 0.08 
+				value = nationalist
+			}
+		}
+		any_pop = { 
+			limit = { strata = middle }
+			ideology = { 
+				factor = 0.08 
+				value = liberal
+			}
+		}
+		any_pop = { 
+			limit = { strata = poor }
+			ideology = { 
+				factor = 0.08 
+				value = communist_social
+			}
+		}
+		change_variable = {
+			which = hungarian_radicalism
+			value = -1
+		}
+		ai_chance = { 
+			factor = 0.2
+			modifier = {
+				factor = 6
+				pop_majority_ideology = communist
+			}
+		}
+	}
+}
+
+
+#A New Socialist Revolution - Sov Event
+country_event = { 
+	id = 8501123
+	title = "A New Socialist Revolution"
+	desc = 
+	picture = ""
+  
+	fire_only_once = yes
+
+	trigger = {
+		tag = RUS
+		has_global_flag = hungarian_revolution_1956
+		year = 1956
+		HUN = {
+			check_variable = {
+				name = hungarian_radicalism
+				NOT = { value = 3 }
+			}
+		}
+	}
+
+	mean_time_to_happen = { days = 5 }
+
+
+	option = {
+		name = "Let Hungary continue on this new path."
+		badboy = -3
+		set_global_flag = hungarian_revolution_success
+		any_pop = { consciousness = 3 }
+		any_pop = { 
+			ideology = { factor = 0.05 value = communist_social }
+		}
+		ai_chance = { 
+			factor = 0.8
+		}
+	}
+
+	option = {
+		name = "We are forced to intervene."
+		badboy = 5
+		HUN = { country_event = 8501126 }
+		any_pop = { consciousness = 3 }
+		any_pop = { 
+			ideology = { factor = 0.05 value = communist }
+		}
+		ai_chance = { 
+			factor = 0.2
+		}
+	}
+}
+
+
+#Reformist Coup in Hungary - Sov Event
+country_event = { 
+	id = 8501124
+	title = "Reformist Coup in Hungary"
+	desc = 
+	picture = ""
+  
+	fire_only_once = yes
+
+	trigger = {
+		tag = RUS
+		has_global_flag = hungarian_revolution_1956
+		year = 1956
+		HUN = {
+			check_variable = {
+				name = hungarian_radicalism
+				value = 3
+			}
+		}
+		HUN = {
+			check_variable = {
+				name = hungarian_radicalism
+				NOT = { value = 5 )
+			}
+		}
+	}
+
+	mean_time_to_happen = { months = 1 }
+
+
+	option = {
+		name = "Exert pressure to keep Hungary in line, but otherwise do not interfere."
+		badboy = -2
+		set_global_flag = hungarian_revolution_success
+		any_pop = { consciousness = 3 }
+		any_pop = { 
+			ideology = { factor = 0.08 value = communist_social }
+		}
+		ai_chance = { 
+			factor = 0.7
+			modifier = {
+				factor = 0.2 #If Hungary isn't a vassal, the USSR is more likely to intervene
+				NOT = { HUN = { vassal_of = RUS } }
+			}
+		}
+	}
+
+	option = {
+		name = "We must oust these so-called 'reformists'."
+		badboy = 5
+		HUN = { country_event = 8501126 }
+		any_pop = { 
+			ideology = { factor = 0.03 value = communist }
+		}
+		ai_chance = { 
+			factor = 0.3
+			modifier = {
+				factor = 6
+				NOT = { HUN = { vassal_of = RUS } }
+			}
+		}
+	}
+}
+
+
+#Complete Chaos in Hungary - Sov Event
+country_event = { 
+	id = 8501125
+	title = "Complete Chaos in Hungary"
+	desc = 
+	picture = ""
+  
+	fire_only_once = yes
+
+	trigger = {
+		tag = RUS
+		has_global_flag = hungarian_revolution_1956
+		year = 1956
+		HUN = {
+			check_variable = {
+				name = hungarian_radicalism
+				value = 5
+			}
+		}
+	}
+
+	mean_time_to_happen = { months = 1 }
+
+
+	option = {
+		name = "We have to intervene immediately."
+		badboy = 3
+		HUN = { country_event = 8501126 }
+		any_pop = { 
+			limit = { strata = poor }
+			ideology = { factor = 0.08 value = communist }
+		}
+		any_pop = {
+			limit = { strata = middle }
+			ideology = { factor = 0.08 value = communist_social }
+		}
+		any_pop = {
+			limit = { strata = rich }
+			ideology = { factor = 0.08 value = liberal }
+		}
+		ai_chance = { 
+			factor = 0.9
+		}
+
+	}
+
+	option = {
+		name = "Hungary will emerge from the chaos."
+		badboy = -5
+		any_pop = { consciousness = 3 }
+		set_global_flag = hungarian_revolution_success
+		any_pop = { 
+			limit = { strata = poor }
+			ideology = { factor = 0.08 value = communist_social }
+		}
+		any_pop = {
+			limit = { strata = middle }
+			ideology = { factor = 0.08 value = liberal }
+		}
+		any_pop = {
+			limit = { strata = rich }
+			ideology = { factor = 0.08 value = nationalist }
+		}
+		ai_chance = { 
+			factor = 0.1
+		}
+	}
+}
+
+
+#Soviet Ultimatum
+country_event = {
+  id = 8501126
+  title = "A Soviet Ultimatum"
+  desc = 
+  picture = ""
+  
+	is_triggered_only = yes 
+	
+	option = {
+		name = "Refuse, and withdraw from the Warsaw Pact."
+		ruling_party_ideology = socialist #Aligning further away from the Socialist bloc
+		RUS = { release_vassal = HUN }
+		RUS = { diplomatic_influence = { who = HUN value = -200 } }
+		RUS = { country_event = }
+		relation = { who = RUS value = -200 }
+
+		#Warsaw pact
+		any_country = {
+			limit = {
+				exists = yes
+				government = proletarian_dictatorship
+				ruling_party_ideology = communist
+				capital_scope = { continent = europe }
+			}
+			any_pop = {
+				consciousness = 2
+				militancy = 2
+				ideology = { factor = 0.05 value = liberal }
+			}
+		}
+		
+		ai_chance = { factor = 0.8 }
+	}
+	
+	option = {
+		name = "Accept Soviet Demands"
+		clr_country_flag = nagy_revolution
+		government = proletarian_dictatorship1
+
+		#Provisional Return to Rakosi's constitution
+		political_reform = ruling_party_opinion
+		political_reform = none_voting #No voting
+		political_reform = limited_meetings
+		political_reform = politicised_service #Politicized
+		political_reform = censored_publishing
+		political_reform = state_controlled_unions #State Unions
+		political_reform = parties_only_nominated
+		political_reform = proportional_representation
+
+		ruling_party_ideology = communist
+
+		RUS = {
+			country_event = #Soviet Intervention - Aftermath - SOV
+		}
+
+		ai_chance = { factor = 0.2 }
+	}
+	
+}
+
+
+#Soviet Intervention? Operation Whirlwind
+country_event = {
+	id = 8501127
+	title = "Operation Whirlwind"
+	desc = 
+	picture = ""
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "Make preparations for an immediate invasion."
+
+		#Hungarian Invasion
+		HUN = { country_event = 8501128 }
+		
+		#Domestic pops are happy
+		any_pop = { 
+			militancy = -2.0 
+			consciousness = -3 
+		}
+
+
+		ai_chance = { factor = 0.99 }
+	}
+
+	option = {
+		name = "We are forced to withdraw."
+		prestige_factor = -0.1
+
+		
+		#Domestic pops get angry
+		any_pop = { 
+			militancy = 5 
+			consciousness = 3 
+			ideology = { factor = 0.08 value = liberal }
+		}
+		
+		#US is happy
+		relation = { who = USA value = 100 }
+		
+		#Hungarian Revolution succeeds
+		HUN = { country_event = 8501134 }
+		
+		ai_chance = { factor = 0.01 }
+	}
+}
+
+
+#Soviet Intervention - Hungarian Response
+country_event = {
+	id = 8501128
+	title = "Soviet Intervention"
+	desc = 
+	picture = ""
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "Soviet forces restore order throughout the nation."
 		government = proletarian_dictatorship1
 		ruling_party_ideology = communist
-		country_event = 800052
+		#Provisional Return to Rakosi's constitution
+		political_reform = ruling_party_opinion
+		political_reform = none_voting #No voting
+		political_reform = limited_meetings
+		political_reform = politicised_service #Politicized
+		political_reform = censored_publishing
+		political_reform = state_controlled_unions #State Unions
+		political_reform = parties_only_nominated
+		political_reform = proportional_representation
+
+		set_global_flag = hungarian_revolution_defeat
+
+		#Soviet Choice of who now is in charge in Hungary
+		RUS = { country_event = 8501130 }
 		
 		#Domestic pops get angry
 		any_pop = { 
@@ -95,11 +1373,13 @@ country_event = {
 	}
 	
 	option = {
-		name = "We shall fight to be free!"
+		name = "Appeal to the West and prepare to defend our borders!"
 		any_pop = { militancy = -2.0 consciousness = -3 }
 		
-		set_global_flag = 1956_HUN_war_for_indy
+		set_country_flag = 1956_HUN_war_for_indy
 		
+		USA = { country_event = 8501105 }
+
 		#Domestic pops become nationalist
 		any_pop = { 
 			militancy = -10
@@ -116,60 +1396,9 @@ country_event = {
 
 		ai_chance = { factor = 0.1 }
 	}
-
 }
 
-#Soviet decision to invade Hungary
-country_event = {
-	id = 8501104
-	title = EVT_8501103_NAME
-	desc = EVT_8501103_DESC
-	picture = "nwo2_hungarian_revolution_1956"
-	
-	is_triggered_only = yes
-
-	option = {
-		name = "Restore order in Hungary!"
-		
-		badboy = 5
-		
-		#Domestic pops are happy
-		any_pop = { 
-			militancy = -2.0 
-			consciousness = -3 
-		}
-
-		#US intervention?
-		USA = { country_event = 8501105 }
-
-		ai_chance = { factor = 0.9 }
-	}
-
-	option = {
-		name = "Let them be free"
-		prestige_factor = -0.1
-		diplomatic_influence = { who = HUN value = -100 }
-		release_vassal = HUN
-		
-		#Domestic pops get angry
-		any_pop = { 
-			militancy = 2.0 
-			consciousness = 3 
-			ideology = { factor = 0.05 value = liberal }
-		}
-		
-		#US is happy
-		relation = { who = USA value = 100 }
-		
-		#Hungarian Revolution succeeds
-		HUN = { country_event = 8501102 }
-		
-		ai_chance = { factor = 0.1 }
-	}
-
-}
-
-#Soviet decision to invade Hungary - USA reaction
+#US Reaction to Soviet Intervention in Hungary
 country_event = {
 	id = 8501105
 	title = EVT_8501103_NAME
@@ -183,67 +1412,58 @@ country_event = {
 
 		prestige_factor = -0.05
 		
-		RUS = { prestige_factor = -0.025 badboy = 2.5 }
 		relation = { who = RUS value = -100 }
 		
-		#Hungarian Revolution fails!
-		HUN = { country_event = 8501103 }
-
-		ai_chance = { factor = 0.9 }
+		ai_chance = { factor = 0.99 }
 	}
 
 	option = {
-		name = "Fight alongside Hungary (WW3)"
+		name = "Fight alongside Hungary (Potential WW3)"
 
 		diplomatic_influence = { who = HUN value = 200 }
 		relation = { who = HUN value = 200 }
 		create_alliance = HUN
 
-		#USSR goes to war against Hungary!
-		RUS = {
-			release_vassal = HUN
-			diplomatic_influence = { who = HUN value = -200 }
-			war = {
-				target = HUN
-				attacker_goal = { casus_belli = make_puppet }
-				defender_goal = { casus_belli = status_quo } 
-			}
-		}
-
-		ai_chance = { factor = 0.1 }
+		ai_chance = { factor = 0.01 }
 	}
-
 }
 
-#Hungarian Revolution defeated
+
+#End of the Hungarian Revolution, historical
 country_event = {
-  id = 8501108
+  id = 8501129
   title = "Restoration of Soviet Rule"
-  desc = EVTDESC8501108
+  desc = 
   picture = "hungarian_communist_gov_change"
   
 	fire_only_once = yes
 
 	trigger = {
-    	tag = HUN
-		has_global_flag = 1956_HUN_war_for_indy
+    		tag = HUN
+		has_country_flag = 1956_HUN_war_for_indy
 		NOT = { year = 1960 }
 		
-		government = proletarian_dictatorship
 		vassal_of = RUS
-    	war = no
+    		war = no
 		
 		#Cold War
 		has_global_flag = blocsenabled
 	}
 
+	mean_time_to_happen = { months = 1 }
 
 	option = {
-		name = "Long live the new Chairman Kadar!"
+		name = "Hungary is once more a Soviet satellite."
+
+		set_global_flag = hungarian_revolution_defeat
+
 		prestige_factor = -0.10
 		government = proletarian_dictatorship1
 		ruling_party_ideology = communist
 		country_event = 800052
+
+		#The USSR chooses the new leadership
+		RUS = { country_event = 8501130 }
 
 		#Domestic pops get angry
 		any_pop = {
@@ -256,4 +1476,385 @@ country_event = {
 
 	}
 	
+}
+
+
+#Soviet Intervention - Aftermath - SOV
+country_event = {
+	id = 8501130
+	title = "The Fate of Hungary"
+	desc = 
+	picture = ""
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "Let moderate reformists take the reigns."
+		badboy = -1
+		any_pop = { militancy = -2 consciousness = 4 }
+		any_pop = { 
+			limit = { OR = { strata = poor strata = middle } }
+			ideology = { factor = 0.15 value = communist_social }
+		}
+
+		HUN = {
+			country_event = 8501131
+		}
+
+		ai_chance = { factor = 0.7 }
+	}
+
+	option = {
+		name = "Give power to dedicated Marxist-Leninists."
+		badboy = 1
+		any_pop = { militancy = -2 consciousness = 2 }
+		any_pop = { 
+			limit = { OR = { strata = poor strata = middle } }
+			ideology = { factor = 0.15 value = communist }
+		}
+
+		HUN = {
+			country_event = 8501132
+		}
+
+		ai_chance = { factor = 0.2 }
+	}
+	
+	option = {
+		name = "Hungary was clearly lost without Rakosi, put Stalinists back into power."
+		badboy = 3
+		any_pop = { militancy = -4 consciousness = -4 }
+		any_pop = { 
+			limit = { strata = poor }
+			ideology = { factor = 0.20 value = communist }
+		}
+
+		add_country_modifier = { name = political_strife duration = 2095 } #All this happened because of DeStalinization, putting Stalinists back in power now will probably not help party unity
+
+		HUN = {
+			country_event = 8501133
+		}
+
+		ai_chance = { factor = 0.1 }
+	}
+}
+
+
+
+#Soviet Leader selection - Reformist
+country_event = {
+	id = 8501131
+	title = "Soviets Permit a Reformist Hungary"
+	desc = 
+	picture = ""
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "Power falls to the prominent reformist Kadar."
+
+		clr_country_flag = nagy_revolution_hun
+		set_country_flag = kadar_hungary
+
+		government = proletarian_dictatorship1
+		ruling_party_ideology = communist_social
+
+		any_pop = { militancy = -2 consciousness = -2 }
+		any_pop = { 
+			limit = { OR = { strata = poor strata = middle } }
+			ideology = { factor = 0.15 value = communist_social }
+		}
+	}
+}
+
+
+#Soviet Leader selection - Moderate
+country_event = {
+	id = 8501132
+	title = "Soviets Empower Orthodox Forces"
+	desc = 
+	picture = ""
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "György Lukács."
+
+		clr_country_flag = nagy_revolution_hun
+		set_country_flag = lukacs_hungary
+
+		government = proletarian_dictatorship1
+		ruling_party_ideology = communist
+
+		any_pop = { militancy = 2 consciousness = 2 }
+		any_pop = { 
+			limit = { OR = { strata = poor strata = middle } }
+			ideology = { factor = 0.1 value = communist }
+		}
+		ai_chance = { factor = 0.5 }
+	}
+
+	option = {
+		name = "Gyula Hevesi."
+
+		clr_country_flag = nagy_revolution_hun
+		set_country_flag = hevesi_hungary
+
+		government = proletarian_dictatorship1
+		ruling_party_ideology = communist
+
+		any_pop = { militancy = 2 consciousness = 2 }
+		any_pop = { 
+			limit = { OR = { strata = poor strata = middle } }
+			ideology = { factor = 0.1 value = communist }
+		}
+		ai_chance = { factor = 0.5 }
+	}
+}
+
+#Soviet Leader selection - Stalinist
+country_event = {
+	id = 8501133
+	title = "Soviets Demand a Return to Stalinism"
+	desc = 
+	picture = ""
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "Erno Gero comes to power once again."
+
+		clr_country_flag = nagy_revolution_hun
+		set_country_flag = gero_hungary
+
+		government = proletarian_dictatorship
+		ruling_party_ideology = communist
+
+		any_pop = { militancy = 4 consciousness = 4 }
+		any_pop = { 
+			limit = { strata = poor }
+			ideology = { factor = 0.15 value = communist }
+		}
+		ai_chance = { factor = 0.7 }
+	}
+
+	option = {
+		name = "András Hegedüs."
+
+		clr_country_flag = nagy_revolution_hun
+		set_country_flag = hegedus_hungary
+
+		government = proletarian_dictatorship1
+		ruling_party_ideology = communist
+
+		any_pop = { militancy = 4 consciousness = 4 }
+		any_pop = { 
+			limit = { strata = poor }
+			ideology = { factor = 0.15 value = communist }
+		}
+		ai_chance = { factor = 0.3 }
+	}
+}
+
+
+#End of the Hungarian Revolution, victory
+country_event = {
+  id = 8501134
+  title = "A Free and Neutral Hungary"
+  desc = 
+  picture = "nwo2_hungarian_revolution_1956_victory"
+  
+	fire_only_once = yes
+
+	trigger = {
+    		tag = HUN
+		has_country_flag = 1956_HUN_war_for_indy
+		NOT = { year = 1960 }
+		
+		NOT = { vassal_of = RUS }
+    		war = no
+		
+		#Cold War
+		has_global_flag = blocsenabled
+	}
+
+	mean_time_to_happen = { months = 1 }
+
+	option = {
+		name = "Hungary, triumphant, can take its place as a neutral socialist-aligned nation."
+		prestige = 250
+		set_global_flag = hungarian_revolution_success
+		clr_country_flag = nagy_revolution_hun
+		set_country_flag = nagy_hungary_ind
+		any_pop = { 
+			militancy = -5
+			consciousness = 10 
+			ideology = { factor = 0.10 value = socialist }
+		}
+	}
+}
+
+
+#End of the Hungarian Revolution, Soviets help restore order #Special event for if Hungary does not revoke its puppet status and the USSR doesn't oust the Reformists
+country_event = {
+  id = 8501135
+  title = "Soviets Help Restore Order"
+  desc = 
+  picture = ""
+  
+	fire_only_once = yes
+
+	trigger = {
+    		tag = HUN
+
+		has_global_flag = hungarian_revolution_success
+		has_country_flag = nagy_revolution_hun
+
+		NOT = { year = 1960 }
+		
+		vassal_of = RUS
+    		war = no
+		
+	}
+
+	mean_time_to_happen = { months = 1 }
+
+	option = {
+		name = "With the help of the Soviets, Hungary shall push into a new socialist future!"
+		prestige = 250
+		clr_country_flag = nagy_revolution_hun
+		set_country_flag = nagy_hungary
+		any_pop = { 
+			militancy = -5
+			consciousness = -5 
+			ideology = { factor = 0.10 value = communist_social }
+		}
+	}
+}
+
+
+#End of the Hungarian Revolution, successful Reform
+country_event = {
+  id = 8501135
+  title = "A New Socialist Revolution"
+  desc = 
+  picture = ""
+  
+	fire_only_once = yes
+
+	trigger = {
+    		tag = HUN
+
+		has_global_flag = hungarian_revolution_success
+		has_country_flag = nagy_revolution_hun
+
+		NOT = { year = 1960 }
+		
+		NOT = { vassal_of = RUS }
+    		war = no
+		
+	}
+
+	mean_time_to_happen = { months = 1 }
+
+	option = {
+		name = "Hungary shall push into a new socialist future!"
+		prestige = 20
+		clr_country_flag = nagy_revolution_hun
+		set_country_flag = nagy_hungary_ind
+		any_pop = { 
+			militancy = -5
+			consciousness = -5 
+			ideology = { factor = 0.10 value = communist_social }
+		}
+	}
+}
+
+
+#Event for Warsaw Pact nations if the revolution succeeded
+country_event = {
+	id = 8501136
+	title = "Hungary Breaks from the Bloc"
+	desc = 
+	picture = ""
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "We must take measures against such disorder in our own nation..."
+
+		any_pop = { militancy = 2 consciousness = 2 }
+		any_pop = { 
+			limit = { strata = rich }
+			ideology = { factor = 0.15 value = nationalist }
+		}
+		any_pop = { 
+			limit = { strata = middle }
+			ideology = { factor = 0.15 value = liberal }
+		}
+		any_pop = { 
+			limit = { strata = poor }
+			ideology = { factor = 0.15 value = communist_social }
+		}
+	}
+}
+
+
+#Event for Warsaw Pact nations if the Reform succeeded
+country_event = {
+	id = 8501137
+	title = "A New Socialist Revolution in Hungary"
+	desc = 
+	picture = ""
+	
+	is_triggered_only = yes
+
+
+	option = {
+		name = "Will Hungary be a model for a new face of Socialism?"
+
+		any_pop = { militancy = 2 consciousness = 2 }
+		any_pop = { 
+			limit = { strata = rich }
+			ideology = { factor = 0.15 value = liberal }
+		}
+		any_pop = { 
+			limit = { strata = middle }
+			ideology = { factor = 0.15 value = communist_social }
+		}
+		any_pop = { 
+			limit = { strata = poor }
+			ideology = { factor = 0.15 value = communist_social }
+		}
+	}
+}
+
+
+#Event for Warsaw Pact nations for the historic outcome
+country_event = {
+	id = 8501138
+	title = "The End of the Hungarian Uprising"
+	desc = 
+	picture = ""
+	
+	is_triggered_only = yes
+
+
+	option = {
+		name = "Let us hope this is the end of the ambitions of these counter-revolutionaries."
+
+		any_pop = { militancy = 2 consciousness = 2 }
+		any_pop = { 
+			limit = { strata = rich }
+			ideology = { factor = 0.1 value = nationalist }
+		}
+		any_pop = { 
+			limit = { strata = middle }
+			ideology = { factor = 0.1 value = communist_social }
+		}
+		any_pop = { 
+			limit = { strata = poor }
+			ideology = { factor = 0.15 value = communist }
+		}
+	}
 }
