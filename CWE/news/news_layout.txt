@@ -512,30 +512,18 @@ style =
 		# USA ###################
 		case = {
 			trigger = {
-					AND = {
-						OR = {
-							tag = USA
-							tag = CSA
-							tag = TEX
-							tag = CAL
-							tag = HAW
-						}
-						ruling_party_ideology = populist
-					}
+				AND = {
+					is_culture_group = american_cultures
+					ruling_party_ideology = populist
 				}
+			}
 			picture = "news/USA_facist_newspaper_title.dds"
 		}
 
 		case = {
 			trigger = {
 				AND = {
-					OR = {
-						tag = USA
-						tag = CSA
-						tag = TEX
-						tag = CAL
-						tag = HAW
-					}
+					is_culture_group = american_cultures
 					ruling_party_ideology = traditionalist
 				}
 			}
@@ -544,13 +532,7 @@ style =
 
 		case =	{
 			trigger = {
-				OR = {
-					tag = USA
-					tag = CSA
-					tag = TEX
-					tag = CAL
-					tag = HAW
-				}
+				is_culture_group = american_cultures
 			}
 			picture = "news/USA_default_newspaper_title.dds"
 		}
@@ -831,6 +813,7 @@ style =
 			trigger = {
 				OR = {
 					is_culture_group = arabic
+					is_culture_group = regional_arabic_1
 					is_culture_group = maghreb_cultures
 				}
 			}
@@ -906,7 +889,7 @@ style =
 
 		# SWI ########################
 		case = {
-			trigger = { tag = SWI }
+			trigger = { is_culture_group = european_germanic_cultures }
 			picture = "news/SWI_default_newspaper_title.dds"
 		}
 
@@ -915,7 +898,7 @@ style =
 		case = {
 			trigger = {
 				AND = {
-					is_culture_group = european_germanic_cultures
+					is_culture_group = german_cultures
 					ruling_party_ideology = traditionalist
 				}
 			}
@@ -925,7 +908,7 @@ style =
 		case = {
 			trigger = {
 				AND = {
-					is_culture_group = european_germanic_cultures
+					is_culture_group = german_cultures
 					OR = {
 						ruling_party_ideology = communist
 						ruling_party_ideology = communist_social
@@ -938,7 +921,7 @@ style =
 		case = {
 			trigger = {
 				AND = {
-					is_culture_group = european_germanic_cultures
+					is_culture_group = german_cultures
 					ruling_party_ideology = populist
 				}
 			}
@@ -949,18 +932,18 @@ style =
 			trigger = {
 				OR = {
 					AND = {
-						is_culture_group = european_germanic_cultures
+						is_culture_group = german_cultures
 					}
 					AND = {
 						part_of_sphere = yes
 						sphere_owner = {
-							is_culture_group = european_germanic_cultures
+							is_culture_group = german_cultures
 						}
 					}
 					AND = {
 						is_vassal = yes
 						overlord = {
-							is_culture_group = european_germanic_cultures
+							is_culture_group = german_cultures
 						}
 					}
 				}
@@ -1040,25 +1023,13 @@ style =
 					AND = {
 						part_of_sphere = yes
 						sphere_owner = {
-							OR = {
-								tag = USA
-								tag = CSA
-								tag = TEX
-								tag = CAL
-								tag = HAW
-							}
+							is_culture_group = american_cultures
 						}
 					}
 					AND = {
 						is_vassal = yes
 						overlord = {
-							OR = {
-								tag = USA
-								tag = CSA
-								tag = TEX
-								tag = CAL
-								tag = HAW
-							}
+							is_culture_group = american_cultures
 						}
 					}
 				}
@@ -2370,6 +2341,7 @@ style =
 						sphere_owner = {
 							OR = {
 								is_culture_group = arabic
+								is_culture_group = regional_arabic_1
 								is_culture_group = maghreb_cultures
 							}
 						}
@@ -2379,6 +2351,7 @@ style =
 						overlord = {
 							OR = {
 								is_culture_group = arabic
+								is_culture_group = regional_arabic_1
 								is_culture_group = maghreb_cultures
 							}
 						}
@@ -2514,13 +2487,13 @@ style =
 					AND = {
 						part_of_sphere = yes
 						sphere_owner = {
-							tag = SWI
+							is_culture_group = european_germanic_cultures
 						}
 					}
 					AND = {
 						is_vassal = yes
 						overlord = {
-							tag = SWI
+							is_culture_group = european_germanic_cultures
 						}
 					}
 				}
@@ -2535,14 +2508,14 @@ style =
 					AND = {
 						part_of_sphere = yes
 						sphere_owner = {
-							is_culture_group = european_germanic_cultures
+							is_culture_group = german_cultures
 							ruling_party_ideology = traditionalist
 						}
 					}
 					AND = {
 						is_vassal = yes
 						overlord = {
-							is_culture_group = european_germanic_cultures
+							is_culture_group = german_cultures
 							ruling_party_ideology = traditionalist
 						}
 					}
@@ -2557,7 +2530,7 @@ style =
 					AND = {
 						part_of_sphere = yes
 						sphere_owner = {
-							is_culture_group = european_germanic_cultures
+							is_culture_group = german_cultures
 							OR = {
 								ruling_party_ideology = communist
 								ruling_party_ideology = communist_social
@@ -2567,7 +2540,7 @@ style =
 					AND = {
 						is_vassal = yes
 						overlord = {
-							is_culture_group = european_germanic_cultures
+							is_culture_group = german_cultures
 							OR = {
 								ruling_party_ideology = communist
 								ruling_party_ideology = communist_social
@@ -2585,14 +2558,14 @@ style =
 					AND = {
 						part_of_sphere = yes
 						sphere_owner = {
-							is_culture_group = european_germanic_cultures
+							is_culture_group = german_cultures
 							ruling_party_ideology = populist
 						}
 					}
 					AND = {
 						is_vassal = yes
 						overlord = {
-							is_culture_group = european_germanic_cultures
+							is_culture_group = german_cultures
 							ruling_party_ideology = populist
 						}
 					}
@@ -2607,13 +2580,13 @@ style =
 					AND = {
 						part_of_sphere = yes
 						sphere_owner = {
-							is_culture_group = european_germanic_cultures
+							is_culture_group = german_cultures
 						}
 					}
 					AND = {
 						is_vassal = yes
 						overlord = {
-							is_culture_group = european_germanic_cultures
+							is_culture_group = german_cultures
 						}
 					}
 				}

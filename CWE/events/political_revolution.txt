@@ -926,6 +926,9 @@ country_event = { # The New Regime - Democracy
 	option = {
 		name = "EVTOPTA800054"
 		
+		# To prevent instant reverts back to a dictatorship
+		upper_house = { ideology = liberal value = 95 }
+		
 		# remove ideology based modifiers 
 		remove_country_modifier = comecon 
 		remove_country_modifier = comecon_excluded
@@ -952,6 +955,7 @@ country_event = { # The New Regime - Democracy
 
 		# end - from rebel_types	
 	}
+	
 }
 
 country_event = { # The New Regime Form of Government
@@ -1451,7 +1455,7 @@ country_event = {
 			factor = 0.5
 			modifier = {
 				factor = 0.1
-OR = { government = hms_government government = democracy }
+OR = { government = hms_government government = hms_government1 government = democracy government = democracy1 }
 			}
 			modifier = {
 				factor = 1.75

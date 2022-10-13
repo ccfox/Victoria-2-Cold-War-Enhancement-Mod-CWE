@@ -1,6 +1,11 @@
 # GENERATED 
 # Special countries...
 REB = "countries/rebels.txt"
+SMO = "countries/American Samoa.txt"
+KRI = "countries/Iranian Kurdistan.txt"
+KRQ = "countries/Iraqi Kurdistan.txt"
+SZB = "countries/South Azerbaijan.txt"
+NNG = "countries/Northern Nigeria.txt"
 MRH = "countries/Maharashtra.txt"
 XIJ = "countries/Xinjiang.txt"
 WEC = "countries/Western Canada.txt"
@@ -389,6 +394,7 @@ TNT = "countries/Tuva.txt"
 TUV = "countries/Tuvalu.txt"
 UDM = "countries/Udmurtia.txt"
 UGA = "countries/Uganda.txt"
+BGA = "countries/Buganda.txt"
 UKR = "countries/Ukraine.txt"
 ENG = "countries/United Kingdom.txt"
 URU = "countries/Uruguay.txt"
@@ -507,6 +513,7 @@ WUA = "countries/Western American States.txt"
 CUA = "countries/Midwest States of America.txt"
 DAK = "countries/Lakota.txt"
 NEG = "countries/New England.txt"
+TNZ = "countries/Tanganyika-Zanzibar.txt"
 
 #Occupation of Germany tags
 
