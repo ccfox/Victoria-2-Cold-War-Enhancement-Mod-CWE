@@ -164,7 +164,7 @@ icbm = {
 		}
 	}
 }
-submarine_launched_ballistic_missile = {
+missile_guidance_system = {
 	area = ballistic_and_recon
 	year = 1960
 	cost = 7200
