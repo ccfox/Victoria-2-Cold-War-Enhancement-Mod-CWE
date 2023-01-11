@@ -899,16 +899,6 @@ arabic = {
 		 first_names = { "Ibn Muhammad" "Abdullah" "Abbas said" "Ismail Mansur" "Rahman" "Abdallahi" "Hassan" "Malusi" "Tahir" "Wiraj" "Amsalu" "Nijam" "Bakri" "Abd Allah" "Abd al-Karim" "Abd al-Malik" "Abd al-Qadir" "Abd al-Rahman" "Abu Bakr" "Ahmad" "Ali" "Fawzi" "Fuad" "Halil" "Hasan" "Hisham" "Ibrahim" "Ishaq" "Iskandar" "Ja'far" "Jamal" "Kamil" "Khalid" "Muhammad" "Mustafa" "Nur al-Din" "Sa'd al-Din" "Salim"  "Sa'ud" "Shukri" "Tawfiq" "Umar" "Uthman" "Yahya" "Yusuf" "Zafir" }
 		 last_names = { Ahmad Ali Zubayr Digna Azrak Hammuda al-Tasashi Nujumi "al-Annabi" "al-Araishi" "al-Asfawi" "al-Binzarti" "al-Fasi" "al-Gharyani" "al-Jaza'iri" "al-Miknasi" "al-Misurati" "al-Murrakushi" "al-Qabisi" "al-Qayrawani" "al-Ribati" "al-Safaqisi" "al-Silawi" "al-Sirti" "al-Susawi" "al-Tilimsani" "al-Tanjawi" "al-Tatwani" "al-Trablusi" "al-Tunusi" "al-Wahrani" "al-Warqali" "al-Wujdi" "ibn Abd Allah" "ibn Abd al-Qadir" "ibn Abu Bakr" "ibn Ahmad" "ibn Ali" "ibn Fuad" "ibn Halil" "ibn Hasan" "ibn Hisham" "ibn Ishaq" "ibn Ja'far" "ibm Kamil" "ibn Khalid" "ibn Muhammad" "ibn Mustafa" "ibn Salim" "ibn Umar" "ibn Uthman" "ibn Yusuf" }
 	}
-
-	mauritanian = {
-		color = { 76 179 250 }
-		first_names = { 
-			Abdullah Abdulhamid Abdulkerim Ahmet Ali Bekir Cemal Enver Fevzi Fuat Halil Hasan Ibrahim Iskender Ismet Izzet Kamil Kazim Kemal Mehmet Murat Musa Mustafa Nazim Nurettin Omar Osman Nuri Rauf Rifat Selim Shukru Suleyman Urabi Yusuf Yunus Ziya
-			}
-		last_names = { 
-			Elsherbiny  Elshinnawy Abdel-Dayem Elhadidy Adib Bassili Aboul-Nour Elbassiouny Aoul-Enein Elsaeid Elhousseiny Khattab Gouda Elbordiny Arafa Elsafty Elshorbagy Hasheesh Halim Tawakol Elfar Elbadry Khalil Shahin Elserafie Hakim Kira Amer Bakhoum Elmanawy Deyab Derbala Elhadidi Elbenhawy Negm Nakhla Koura Elshazly Soliman Elkhashab Elkady Hindawy Zeitoun Elgammal 
-		}
-	}
 	
 	egyptian = {
 		color = { 243 214 76 }
@@ -1487,12 +1477,6 @@ south_asian_indian = {
 south_asian_pakistani = {
 	leader = indian
 	unit = IndianGC
-	indian_muslim = {
-		 #!religion = { sunni }
-		 color = { 0 100 0 }
-		 first_names = { Ranjit Kharak Nau Nihal Chand Kaur Shir Dhalip Diwan Jassa Hari Bhuma Nawab Banda Baba Kapur }
-		 last_names = { Singh Kunwar Bahadur Dhillon Nalwa Ahluwalia Ramgarhia Mal Mulraj }
-	}
 	sindi = {
 		 color = { 190 65 230 }
 		 first_names = { "Morad Ali" "Nur Mohammad" Sobhdar Hosayn Shahdad Mohammad Nasir Morad Karim Gholam "Mir Fath" }
@@ -1515,6 +1499,12 @@ bangladeshi_cultures = {
 		 color = { 60 179 113  }
 		 first_names = { Murshid Quli Shujauddin Alauddin Alivardi Sirajuddaula "Mir Muhammad" Najimuddin Reza Saifuddaula Zainul Ahmad Mansur Mubarak Hasan Wasif Waris }
 		 last_names = { Jafar Muhammad Sarfaraz Ali "Qasim Ali" Najabut Bahadur Mirza }
+	}
+	bengali_hindu = {
+		 #!religion = { hindu }
+		 color = { 255 99 71 }
+		 first_names = { Ranjit Kharak Nau Nihal Chand Kaur Shir Dhalip Diwan Jassa Hari Bhuma Nawab Banda Baba Kapur }
+		 last_names = { Singh Kunwar Bahadur Dhillon Nalwa Ahluwalia Ramgarhia Mal Mulraj }
 	}
 	union = BNG
 }
