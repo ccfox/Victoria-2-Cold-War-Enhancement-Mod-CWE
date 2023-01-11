@@ -2673,7 +2673,7 @@
 
 	#For Pan-Arab and National Arab
 	farmers = {
-		culture = mauritanian
+		culture = arab_hassaniya
 		religion =  sunni 
 		size = 1000
 	 } 
@@ -2698,7 +2698,7 @@
 
 	#For Pan-Arab and National Arab
 	farmers = {
-		culture = mauritanian
+		culture = arab_hassaniya
 		religion =  sunni 
 		size = 1000
 	 } 
@@ -2724,7 +2724,7 @@
 
 	#For Pan-Arab and National Arab
 	farmers = {
-		culture = mauritanian
+		culture = arab_hassaniya
 		religion =  sunni 
 		size = 1000
 	 } 
@@ -2750,7 +2750,7 @@
 
 	#For Pan-Arab and National Arab
 	farmers = {
-		culture = mauritanian
+		culture = arab_hassaniya
 		religion =  sunni 
 		size = 1000
 	 } 
@@ -2771,7 +2771,7 @@
 
 	#For Pan-Arab and National Arab
 	farmers = {
-		culture = mauritanian
+		culture = arab_hassaniya
 		religion =  sunni 
 		size = 100
 	 } 
@@ -2832,7 +2832,7 @@
 
 	#For Pan-Arab and National Arab
 	farmers = {
-		culture = mauritanian
+		culture = arab_hassaniya
 		religion =  sunni 
 		size = 1000
 	 } 
@@ -2853,7 +2853,7 @@
 
 	#For Pan-Arab and National Arab
 	farmers = {
-		culture = mauritanian
+		culture = arab_hassaniya
 		religion =  sunni 
 		size = 1000
 	 } 
@@ -2909,7 +2909,7 @@
 
 	#For Pan-Arab and National Arab
 	farmers = {
-		culture = mauritanian
+		culture = arab_hassaniya
 		religion =  sunni 
 		size = 100
 	 } 
