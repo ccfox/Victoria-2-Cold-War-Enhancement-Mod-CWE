@@ -37,10 +37,10 @@ USA = {
 USA = { set_country_flag = liberal_surge }
 
 #Greece 1993 Election
-GRE = { set_country_flag = reformist_surge }
+GRE = { set_country_flag = socialist_surge }
 
 #Chile Return to Democracy
-CHL = { set_country_flag = liberal_surge }
+CHL = { set_country_flag = big_tent_surge }
 
 #Oil Companies
 add_country_modifier = { name = oil_cartel duration = -1 }
@@ -344,13 +344,13 @@ any_country = {
 	activate_technology = interstate_highway_system
 }
 
-#Nuclear Submarines Tech bugfix for 1992 start
+#Close Air Support Tech bugfix for 1992 start
 any_country = { 
 	limit = { 
-		NOT = { nuclear_submarine = 1 }
-		destroyers = 1
+		NOT = { close_air_support = 1 }
+		third_generation_jet_fighters = 1
 	} 
-	activate_technology = nuclear_submarine
+	activate_technology = close_air_support
 }
 
 #South Africa
@@ -596,7 +596,7 @@ any_country = {
 	add_country_modifier = { name = opecmember duration = -1 }
 	
 	random_owned = { limit = { owner = { has_country_modifier = opecmember OR = { ruling_party_ideology = populist ruling_party_ideology = communist ruling_party_ideology = socialist } } } owner = { set_country_flag = oil_high any_owned = { limit = { trade_goods = petroleum } add_province_modifier = { name = oil_high duration = -1 } } } }
-	random_owned = { limit = { owner = { has_country_modifier = opecmember OR = { ruling_party_ideology = conservative ruling_party_ideology = reformist ruling_party_ideology = big_tent ruling_party_ideology = liberal ruling_party_ideology = progressive ruling_party_ideology = communist_social } } } owner = { set_country_flag = oil_medium any_owned = { limit = { trade_goods = petroleum } add_province_modifier = { name = oil_medium duration = -1 } } } }
+	random_owned = { limit = { owner = { has_country_modifier = opecmember OR = { ruling_party_ideology = conservative ruling_party_ideology = big_tent ruling_party_ideology = liberal ruling_party_ideology = reformist ruling_party_ideology = progressive ruling_party_ideology = communist_social } } } owner = { set_country_flag = oil_medium any_owned = { limit = { trade_goods = petroleum } add_province_modifier = { name = oil_medium duration = -1 } } } }
 	random_owned = { limit = { owner = { has_country_modifier = opecmember OR = { ruling_party_ideology = nationalist ruling_party_ideology = traditionalist } } } owner = { set_country_flag = oil_low any_owned = { limit = { trade_goods = petroleum } add_province_modifier = { name = oil_low duration = -1 } } } }
 }
 
