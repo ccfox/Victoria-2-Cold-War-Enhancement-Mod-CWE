@@ -62,6 +62,11 @@ political_decisions = {
 				}
 			
 				AND = { 
+					ruling_party_ideology = reformist
+					upper_house = { ideology = reformist value = 0.66 }
+				}
+			
+				AND = { 
 					ruling_party_ideology = progressive
 					upper_house = { ideology = progressive value = 0.66 }
 				}
@@ -82,6 +87,7 @@ political_decisions = {
 			modifier = { factor = 0 is_greater_power = yes }
 			modifier = { factor = 0 NOT = { average_militancy = 8 } }
 			modifier = {
+				factor = 0
 				OR = {
 					AND = { 
 						part_of_sphere = yes 
@@ -165,6 +171,11 @@ political_decisions = {
 				}
 			
 				AND = { 
+					ruling_party_ideology = reformist
+					upper_house = { ideology = reformist value = 0.66 }
+				}
+			
+				AND = { 
 					ruling_party_ideology = progressive
 					upper_house = { ideology = progressive value = 0.66 }
 				}
@@ -185,6 +196,7 @@ political_decisions = {
 			modifier = { factor = 0 is_greater_power = yes }
 			modifier = { factor = 0 NOT = { average_militancy = 8 } }
 			modifier = {
+				factor = 0
 				OR = {
 					AND = { 
 						part_of_sphere = yes 
@@ -275,6 +287,11 @@ political_decisions = {
 				}
 			
 				AND = { 
+					ruling_party_ideology = reformist
+					upper_house = { ideology = reformist value = 0.66 }
+				}
+			
+				AND = { 
 					ruling_party_ideology = progressive
 					upper_house = { ideology = progressive value = 0.66 }
 				}
@@ -298,6 +315,7 @@ political_decisions = {
 			modifier = { factor = 0 is_greater_power = yes }
 			modifier = { factor = 0 NOT = { average_militancy = 8 } }
 			modifier = {
+				factor = 0
 				OR = {
 					AND = { 
 						part_of_sphere = yes 

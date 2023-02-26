@@ -54,6 +54,10 @@ country_event = {
 		any_pop = {
 			scaled_militancy = {
 				factor = 5
+				ideology = reformist
+			}
+			scaled_militancy = {
+				factor = 5
 				ideology = socialist
 			}
 			scaled_militancy = {
@@ -69,7 +73,7 @@ country_event = {
 			factor = 0.9
 			modifier = {
 				factor = 0.85
-				OR = { ruling_party_ideology = progressive ruling_party_ideology = socialist }
+				OR = { ruling_party_ideology = progressive ruling_party_ideology = reformist ruling_party_ideology = socialist }
 			}
 		}
 	}
@@ -109,7 +113,7 @@ country_event = {
 			factor = 0.1
 			modifier = {
 				factor = 10
-				OR = { ruling_party_ideology = progressive ruling_party_ideology = socialist }
+				OR = { ruling_party_ideology = progressive ruling_party_ideology = reformist ruling_party_ideology = socialist }
 			}
 		}
 	}
@@ -1116,6 +1120,7 @@ country_event = {
 			ruling_party_ideology = liberal
 			ruling_party_ideology = progressive
 			ruling_party_ideology = socialist
+			ruling_party_ideology = reformist
 		}
 		
 		money = 600000
@@ -1146,6 +1151,10 @@ country_event = {
 		#Socialists are not happy
 		any_pop = {
 			limit = { is_primary_culture = yes }
+			scaled_militancy = {
+				factor = 5
+				ideology = reformist
+			}
 			scaled_militancy = {
 				factor = 10
 				ideology = socialist
@@ -1563,6 +1572,10 @@ country_event = {
 			}
 			scaled_militancy = {
 				factor = 10
+				ideology = reformist
+			}
+			scaled_militancy = {
+				factor = 10
 				ideology = progressive
 			}
 			scaled_militancy = {
@@ -1646,6 +1659,10 @@ country_event = {
 			scaled_militancy = {
 				factor = 10
 				ideology = liberal
+			}
+			scaled_militancy = {
+				factor = 10
+				ideology = reformist
 			}
 			scaled_militancy = {
 				factor = 10
@@ -1906,7 +1923,7 @@ country_event = {
 	id = 80158631
 	title = "The Patriot Act"
 	desc = EVTDESC80158631
-	picture = "USA_patriot_act"
+	picture = "Guantanamo_captives_in_January_2002" #USA_patriot_act
 
 	fire_only_once = yes
 
@@ -2521,6 +2538,10 @@ country_event = {
 				factor = 5
 				ideology = socialist
 			}
+			scaled_militancy = {
+				factor = 5
+				ideology = reformist
+			}
 		}
 		
 		#Progressives gain in strength
@@ -2629,6 +2650,10 @@ country_event = {
 			}
 			scaled_militancy = {
 				factor = 10
+				ideology = reformist
+			}
+			scaled_militancy = {
+				factor = 10
 				ideology = progressive
 			}
 			scaled_militancy = {
@@ -2726,6 +2751,10 @@ country_event = {
 			scaled_militancy = {
 				factor = 5
 				ideology = socialist
+			}
+			scaled_militancy = {
+				factor = 5
+				ideology = reformist
 			}
 		}
 		
@@ -3000,6 +3029,10 @@ country_event = {
 			}
 			scaled_militancy = {
 				factor = 10
+				ideology = reformist
+			}
+			scaled_militancy = {
+				factor = 10
 				ideology = progressive
 			}
 			scaled_militancy = {
@@ -3068,6 +3101,10 @@ country_event = {
 			scaled_militancy = {
 				factor = 10
 				ideology = liberal
+			}
+			scaled_militancy = {
+				factor = 10
+				ideology = reformist
 			}
 			scaled_militancy = {
 				factor = 10
@@ -3252,6 +3289,10 @@ country_event = {
 			}
 			scaled_militancy = {
 				factor = 10
+				ideology = reformist
+			}
+			scaled_militancy = {
+				factor = 10
 				ideology = progressive
 			}
 			scaled_militancy = {
@@ -3397,6 +3438,10 @@ country_event = {
 			scaled_militancy = {
 				factor = 10
 				ideology = liberal
+			}
+			scaled_militancy = {
+				factor = 10
+				ideology = reformist
 			}
 			scaled_militancy = {
 				factor = 10

@@ -1,4 +1,4 @@
-# either group dictatorship
+# traditional dictatorship
 presidential_dictatorship = {
 	progressive = no
 	liberal = no
@@ -10,6 +10,7 @@ presidential_dictatorship = {
 	socialist = yes
 	conservative = yes
 	nationalist = yes
+	reformist = yes
 	election = no
 	appoint_ruling_party = no #Dictators don't change their minds readily
 }
@@ -24,6 +25,7 @@ colonial_government = {
 	communist = no
 	big_tent = yes
 	communist_social = no
+	reformist = yes
 	election = yes
 	duration = 54
 	appoint_ruling_party = yes
@@ -41,6 +43,7 @@ mandate_government = {
 	communist = no
 	big_tent = yes
 	communist_social = no
+	reformist = yes
 	election = yes
 	duration = 54
 	appoint_ruling_party = yes
@@ -57,12 +60,13 @@ sar_government = {
 	communist = yes
 	big_tent = yes
 	communist_social = yes
+	reformist = yes
 	election = yes
 	duration = 36
 	appoint_ruling_party = yes
 
 }
-# left_group dictatorship
+# left_group governments
 socialist_democracy =
 {
 	progressive = yes
@@ -75,6 +79,7 @@ socialist_democracy =
 	big_tent = no
 	communist = yes
 	communist_social = yes
+	reformist = yes
 	election = yes
 	duration = 66
 	appoint_ruling_party = no
@@ -92,8 +97,9 @@ proletarian_dictatorship =
 	nationalist = no
 	big_tent = no
 	communist = yes
-	election = no
 	communist_social = yes
+	reformist = yes
+	election = no
 	appoint_ruling_party = no
 	flagType = communist
 }
@@ -109,10 +115,12 @@ proletarian_dictatorship1 =
 	big_tent = no
 	communist_social = yes
 	communist = yes
+	reformist = yes
 	election = no
 	appoint_ruling_party = no
 	flagType = socialist
 }
+# rigth_group governments
 nationalist_dictatorship =
 {
 	#which ideology of parties.
@@ -125,12 +133,12 @@ nationalist_dictatorship =
 	big_tent = no
 	communist = no
 	communist_social = no
-	nationalist = yes	
+	nationalist = yes
+	reformist = no
 	election = no
 	appoint_ruling_party = no #Dictators don't change their minds readily
 	flagType = nationalist
 }
-# rigth_group dictatorship
 theocracy =
 {
 	progressive = no
@@ -142,8 +150,8 @@ theocracy =
 	big_tent = yes
 	communist = no
 	nationalist = no
-
-	traditionalist = yes	
+	reformist = no
+	traditionalist = yes
 	election = no
 	appoint_ruling_party = no
 	flagType = theocracy
@@ -154,6 +162,7 @@ populist_dictatorship =
 	liberal = no
 	conservative = yes
 	socialist = yes
+	reformist = no
 	
 	big_tent = no
 	communist = no
@@ -170,6 +179,7 @@ absolute_monarchy = {
 	progressive = no
 	liberal = no
 	conservative = yes
+	reformist = no
 	populist = yes
 	big_tent = yes
 	communist = no
@@ -193,6 +203,7 @@ hms_government = {
 	communist = yes
 	communist_social = yes
 	big_tent = yes
+	reformist = yes
 	election = yes
 	duration = 54
 	appoint_ruling_party = no
@@ -209,6 +220,7 @@ hms_government1 = {
 	communist = yes
 	communist_social = yes
 	big_tent = yes
+	reformist = yes
 	election = yes
 	duration = 54
 	appoint_ruling_party = no
@@ -224,6 +236,7 @@ democracy = {
 	big_tent = yes
 	communist = yes
 	communist_social = yes
+	reformist = yes
 	election = yes
 	duration = 42
 	appoint_ruling_party = no
@@ -239,6 +252,7 @@ democracy1 = {
 	big_tent = yes
 	communist_social = yes
 	communist = yes
+	reformist = yes
 	election = yes
 	duration = 42
 	appoint_ruling_party = no

@@ -12,7 +12,7 @@ party = {
 		end_date = 2100.1.1
 }
 party = {
-		name = "PRI"
+		name = "PRI (Technocrat)"
 		citizenship_policy = full_citizenship
 		economic_policy = interventionism
 		ideology = big_tent
@@ -46,7 +46,7 @@ party = {
 		end_date = 2092.1.1
 }
 party = {
-		name = "PRI"
+		name = "PRI (Left)"
 		citizenship_policy = residency
 		economic_policy = state_capitalism
 		ideology = socialist
@@ -67,8 +67,21 @@ party = {
 		start_date = 1836.1.1
 		end_date = 2092.1.1
 }
+
+#consider making this a generic reformist ideology, or focus on adding anarchists
 party = {
-		name = "Civil Will - Green Party"
+		name = "party_reformist"
+		citizenship_policy = full_citizenship
+		economic_policy = interventionism
+		ideology = reformist
+		religious_policy = secularized
+		trade_policy = free_trade
+		war_policy = pacifism
+		start_date = 1836.1.1
+		end_date = 2100.1.1
+}
+party = {
+		name = "Ecologist Green Party"
 		citizenship_policy = residency
 		economic_policy = interventionism
 		ideology = populist
