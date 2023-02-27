@@ -22,6 +22,8 @@ political_decisions = {
 
 				AND = { ruling_party_ideology = big_tent NOT = { pop_majority_ideology = big_tent } }
 
+				AND = { ruling_party_ideology = reformist NOT = { pop_majority_ideology = reformist } }
+
 				AND = { ruling_party_ideology = progressive NOT = { pop_majority_ideology = progressive } }
 
 				AND = { ruling_party_ideology = liberal NOT = { pop_majority_ideology = liberal } }
@@ -80,6 +82,8 @@ political_decisions = {
 				AND = { ruling_party_ideology = conservative NOT = { pop_majority_ideology = conservative } }
 
 				AND = { ruling_party_ideology = big_tent NOT = { pop_majority_ideology = big_tent } }
+
+				AND = { ruling_party_ideology = reformist NOT = { pop_majority_ideology = reformist } }
 
 				AND = { ruling_party_ideology = progressive NOT = { pop_majority_ideology = progressive } }
 

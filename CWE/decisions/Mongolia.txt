@@ -64,6 +64,10 @@ political_decisions = {
 					ideology = socialist
 				}
 				scaled_militancy = {
+					factor = 5
+					ideology = reformist
+				}
+				scaled_militancy = {
 					factor = 10
 					ideology = communist
 				}

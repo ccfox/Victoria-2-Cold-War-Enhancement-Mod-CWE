@@ -105,6 +105,11 @@ country_event = {
 		}
 
 		random_owned = { 
+			limit = { owner = { ruling_party_ideology = reformist } }
+			owner = { any_pop = { limit = { is_culture_group = THIS } ideology = { factor = 0.15 value = reformist } } }
+		}
+
+		random_owned = { 
 			limit = { owner = { ruling_party_ideology = liberal } }
 			owner = { any_pop = { limit = { is_culture_group = THIS } ideology = { factor = 0.15 value = liberal } } }
 		}
@@ -241,6 +246,11 @@ country_event = {
 		random_owned = { 
 			limit = { owner = { ruling_party_ideology = progressive } }
 			owner = { any_pop = { limit = { is_culture_group = THIS } ideology = { factor = -0.25 value = progressive } } }
+		}
+
+		random_owned = { 
+			limit = { owner = { ruling_party_ideology = reformist } }
+			owner = { any_pop = { limit = { is_culture_group = THIS } ideology = { factor = -0.25 value = reformist } } }
 		}
 
 		random_owned = { 
@@ -457,6 +467,11 @@ country_event = {
 		}
 
 		random_owned = { 
+			limit = { owner = { ruling_party_ideology = reformist } }
+			owner = { any_pop = { limit = { is_culture_group = THIS } ideology = { factor = -0.05 value = reformist } } }
+		}
+
+		random_owned = { 
 			limit = { owner = { ruling_party_ideology = liberal } }
 			owner = { any_pop = { limit = { is_culture_group = THIS } ideology = { factor = -0.05 value = liberal } } }
 		}
@@ -580,6 +595,11 @@ country_event = {
 		}
 
 		random_owned = { 
+			limit = { owner = { ruling_party_ideology = reformist } }
+			owner = { any_pop = { limit = { is_culture_group = THIS } ideology = { factor = 0.05 value = reformist } } }
+		}
+
+		random_owned = { 
 			limit = { owner = { ruling_party_ideology = liberal } }
 			owner = { any_pop = { limit = { is_culture_group = THIS } ideology = { factor = 0.05 value = liberal } } }
 		}
@@ -595,5 +615,37 @@ country_event = {
 		}
 
 	}
+
+}
+
+#Sacking of $CAPITAL$
+country_event = {
+	id = 1610090
+title = "Sacking of $CAPITAL$"
+	desc = EVTDESC1610090
+	picture = "superstate_formation_event"
+
+is_triggered_only = yes
+
+major = yes
+
+option = {
+name = "This is a dark day in $COUNTRY_ADJ$ history"
+prestige_factor = -0.1
+war_exhaustion = 25
+
+#Pops become more nationalist
+any_pop = { 
+limit = { OR = { is_primary_culture = yes is_accepted_culture = yes } }
+ideology = {
+	factor = 0.25
+	value = nationalist
+	}
+}
+
+#All pops become less rebellious
+any_pop = { militancy = -5 }
+
+		}
 
 }

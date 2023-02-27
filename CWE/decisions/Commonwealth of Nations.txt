@@ -141,7 +141,7 @@ leavecommonwealth = {
 				AND = {
 					ai = yes
 					OR = { 
-						AND = { has_global_flag = commonwealthoption1 NOT = { OR = { ruling_party_ideology = liberal ruling_party_ideology = progressive } } } 
+						AND = { has_global_flag = commonwealthoption1 NOT = { OR = { ruling_party_ideology = liberal ruling_party_ideology = reformist ruling_party_ideology = progressive } } } 
 						AND = { has_global_flag = commonwealthoption2 NOT = { OR = { ruling_party_ideology = conservative ruling_party_ideology = big_tent } } } 
 						AND = { has_global_flag = commonwealthoption3 NOT = { OR = { ruling_party_ideology = socialist ruling_party_ideology = communist ruling_party_ideology = communist_social } } } 
 						AND = { has_global_flag = commonwealthoption4 NOT = { OR = { ruling_party_ideology = nationalist ruling_party_ideology = populist ruling_party_ideology = traditionalist } } } 
@@ -205,6 +205,7 @@ leavecommonwealth = {
 			OR = {
 				ai = no
 				AND = { ai = yes ruling_party_ideology = liberal }
+				AND = { ai = yes ruling_party_ideology = reformist }
 				AND = { ai = yes ruling_party_ideology = progressive }
 			}
 		}
