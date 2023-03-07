@@ -8,6 +8,7 @@ modern_shipyard = {
 	supply_range = 0.50
 	activate_building = naval_base
 	
+	supply_range = 0.50
 	colonial_points = 100
 	
 	ai_chance = {
